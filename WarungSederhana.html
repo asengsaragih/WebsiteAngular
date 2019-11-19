@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Warung Angular JS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body>
+	<h3>Warung Sedernaha Angular JS</h3>
+	<div ng-app="myApp" ng-controller="warungCtrl">
+		<p>
+			Pilih Makanan : 
+			<select ng-model="pilihMakanan" ng-options="x.nama for x in makanan"></select>
+		</p>
+		<p>
+			Harga : {{pilihMakanan.harga}}
+		</p>
+		<p>
+			Pilih Minuman : 
+			<select ng-model="pilihMinuman" ng-options="x.nama for x in minuman"></select>
+		</p>
+		<p>
+			Harga : {{pilihMinuman.harga}}
+		</p>
+		<p>
+			<b>Total : {{ pilihMakanan.harga + pilihMinuman.harga }}</b>
+		</p>
+	</div>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('warungCtrl', function($scope) {
+			$scope.makanan = [
+				{nama:'Makanan 1',harga:15000},
+				{nama:'Makanan 2',harga:10000},
+				{nama:'Makanan 3',harga:25000}
+			];
+
+			$scope.minuman = [
+				{nama:'Minuman 1',harga:7000},
+				{nama:'Minuman 2',harga:8000},
+				{nama:'Minuman 3',harga:9000}
+			];
+		});
+	</script>
+</body>
+</html>

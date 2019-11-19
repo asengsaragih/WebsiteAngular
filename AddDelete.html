@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Add Delete With Angular JS</title>
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+
+	<!-- Penambahan Css -->
+	<link rel="stylesheet" type="text/css" href="addDelete.css">
+</head>
+<body ng-app="NameList" ng-controller="nameCtrl">
+	<input type="text" ng-model="addMe">
+	<button ng-click="addItem()">Add</button>
+	<p>{{errortext}}</p>
+	<p>Pesan Error Akan Muncul Jika Memasukkan Data Yang Sama</p>
+
+	<div>
+		<ul>
+			<li ng-repeat="x in nama">{{x}}
+				<button ng-click="removeItem($index)"> x </button>
+			</li>
+		</ul>
+	</div>
+	<script>
+		var app = angular.module('NameList',[]);
+		app.controller("nameCtrl", function($scope){
+			$scope.nama = ['Yulio'];
+			$scope.addItem = function() {
+				$scope.errortext = "";
+				if (!$scope.addMe) {return;}
+				if ($scope.nama.indexOf($scope.addMe) == -1) {
+					$scope.nama.push($scope.addMe);
+				} else {
+					$scope.errortext = "Data Sudah Ada";
+				}
+			}
+			$scope.removeItem = function(x) {
+				$scope.errortext = "";
+				$scope.nama.splice(x,1);
+			}
+		});
+	</script>
+</body>
+</html>

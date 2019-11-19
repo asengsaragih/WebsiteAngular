@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+<body>
+
+    <!--Materi Input type dengan perhitungan matematika-->
+    
+<h3> Berhitung Sederhana | Hitung Nilai Mata Kuliah Anda </h3>
+
+<div data-ng-app="" data-ng-init="uts=0;uas=0;tugas=0;praktikum=0">
+
+UTS : <input type="number" ng-model="uts"><br>
+UAS : <input type="number" ng-model="uas"><br>
+Tugas : <input type="number" ng-model="tugas"><br>
+Praktikum : <input type="number" ng-model="praktikum">
+
+<p><b>Rincian Nilai</b></p>
+
+UTS 30% = {{uts * 30 / 100}}<br>
+UAS 45% = {{uas * 45 / 100}}<br>
+TUGAS 10% = {{tugas * 10 / 100}}<br>
+Praktikum 15% = {{praktikum * 15 / 100}}<br>
+--------------------------- +
+<p>Nilai Akhir=  {{uts * 30 / 100 + uas * 45 / 100 + tugas * 10 / 100 + praktikum * 15 / 100}}</p>
+
+</div>
+</body>
+</html>

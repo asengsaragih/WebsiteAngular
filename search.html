@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Search Data dengan Angular JS</title>
+	<link rel="stylesheet" type="text/css" href="search.css">
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
+</head>
+<body ng-app="myApp" ng-controller="searchCtrl">
+	<h3>Search data sederhana dengan Angular JS</h3>
+	<input type="text" ng-model="cari" placeholder="Cari Data">
+
+	<table>
+		<tr>
+			<th ng-click="orderByMe('nama')">Nama</th>
+			<th ng-click="orderByMe('asal')">Asal</th>
+		</tr>
+		<tr ng-repeat="x in siswa | filter:cari | orderBy:myOrderBy">
+			<td>{{x.nama}}</td>
+			<td>{{x.asal}}</td>
+		</tr>
+	</table>
+	<script>
+		var app = angular.module('myApp',[]);
+		app.controller('searchCtrl', function($scope) {
+			$scope.siswa = [
+				{nama:'Aldi',asal:'Medan'},
+				{nama:'Yulio',asal:'Bandung'},
+				{nama:'Hanna',asal:'Indramayu'},
+				{nama:'Bayu',asal:'Solo'},
+				{nama:'Ceptari',asal:'Yogyakarta'}
+			];
+			$scope.orderByMe = function(x) {
+				$scope.myOrderBy = x;
+			};
+		});
+	</script>
+</body>
+</html>
